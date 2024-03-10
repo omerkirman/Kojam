@@ -10,6 +10,7 @@ public class Attack : MonoBehaviour
 
     private float lastAttackTime; // Time of the last attack
 
+
     void Update()
     {
         // Check if it's time to attack
@@ -35,12 +36,22 @@ public class Attack : MonoBehaviour
                 lastAttackTime = Time.time;
             }
         }
+        // Check if the ScoreScript is available in the scene
+        ScoreScript scoreScript = FindObjectOfType<ScoreScript>();
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    scoreScript.Addpoint();
+        //}
     }
+
 
     void UpdateScore(int value)
     {
         // Here you can implement your score updating logic, e.g., adding to a score variable, displaying on UI, etc.
         // For simplicity, let's just print the score to the console.
+        ScoreScript scoreScript = FindObjectOfType<ScoreScript>();
+      
+        
         Debug.Log("Score: " + value);
     }
 
