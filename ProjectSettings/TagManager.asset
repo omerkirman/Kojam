@@ -14,7 +14,7 @@ TagManager:
   - UI
   - wall
   - Enemy
-  - 
+  - bc
   - 
   - 
   - 
@@ -41,4 +41,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: maing
+    uniqueID: 747876251
+    locked: 0
+  - name: backg
+    uniqueID: 3310037705
     locked: 0
