@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour
     public float jumpForce = 10f;
     public float gravityScale = 2f;
     public LayerMask groundLayer;
+    Animator playerAnimator;
 
     private Rigidbody2D rb;
     private Collider2D col;
@@ -24,6 +25,8 @@ public class CharacterMovement : MonoBehaviour
 
         // Lock rotation
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        playerAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -33,6 +36,8 @@ public class CharacterMovement : MonoBehaviour
 
         // Get horizontal input
         float moveInput = Input.GetAxis("Horizontal");
+        playerAnimator.SetFloat("speed", Mathf.Abs(moveInput));
+
 
         // Calculate horizontal movement
         float targetVelocityX = moveInput * moveSpeed;
