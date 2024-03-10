@@ -9,11 +9,22 @@ public class EnemySpawner : MonoBehaviour
 
     private float timer = 0f;
     private float spawnInterval;
+    
+
+    private Transform player; // Reference to the player's transform
 
     void Start()
     {
         // Set initial spawn interval
         spawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
+        // Find the player GameObject in the scene
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        // Check if player is found
+        if (player == null)
+        {
+            Debug.LogError("Player not found in the scene. Make sure to tag your player GameObject with 'Player'.");
+        }
     }
 
     void Update()
@@ -34,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
             spawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
         }
     }
-
+    
     void SpawnEnemy()
     {
         // Choose a random spawn point

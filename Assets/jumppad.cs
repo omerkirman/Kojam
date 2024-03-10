@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-
-
-public class jumpPad : MonoBehaviour
+public class JumpPad : MonoBehaviour
 {
-    [SerializeField] private float bounce = 20f;
+    [SerializeField] private float bounceForce = 20f;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(("Player")))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                // Apply upward force to the Rigidbody2D
+                rb.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
+            }
         }
     }
 }

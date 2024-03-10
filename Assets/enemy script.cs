@@ -24,11 +24,8 @@ public class EnemyMovement : MonoBehaviour
             // Calculate the direction from the enemy to the player
             Vector3 direction = (player.position - transform.position).normalized;
 
-            // Lock rotation
-            transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
-
             // Move the enemy towards the player
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            transform.Translate(direction * speed * Time.deltaTime);
         }
     }
 }
