@@ -43,7 +43,7 @@ public class CharacterMovement : MonoBehaviour
         rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxMoveSpeed, maxMoveSpeed), rb.velocity.y);
 
         // Flip sprite if moving in the opposite direction and canFlip is true
-        if (canFlip && ((moveInput > 0 && !spriteRenderer.flipX) || (moveInput < 0 && spriteRenderer.flipX)))
+        if (canFlip && ((moveInput < 0 && !spriteRenderer.flipX) || (moveInput > 0 && spriteRenderer.flipX)))
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
