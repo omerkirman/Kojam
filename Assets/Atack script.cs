@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class Attack : MonoBehaviour
 {
     public float attackRange = 2f; // Range within which the enemy can attack
     public float attackDamage = 10f; // Damage inflicted by the enemy's attack
@@ -25,7 +25,7 @@ public class EnemyAttack : MonoBehaviour
                 hitPlayers[0].SendMessage("TakeDamage", attackDamage);
 
                 // Check if the player has been killed
-                if (hitPlayers[0].GetComponent<PlayerHealth>().IsDead())
+                if (hitPlayers[0].GetComponent<PlayerHealth>() != null && hitPlayers[0].GetComponent<PlayerHealth>().IsDead())
                 {
                     // Add score if the player has been killed
                     UpdateScore(scoreValue);
